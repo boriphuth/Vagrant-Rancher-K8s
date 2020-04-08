@@ -10,3 +10,5 @@
     - curl
     - gnupg-agent
     - software-properties-common
+  register: stuff
+- debug: msg="{{ stuff.stdout_lines }}"

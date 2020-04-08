@@ -8,6 +8,17 @@
       changed_when: False
     - setup:
 
+- hosts: rancher
+  become: true
+  gather_facts: true
+  roles:
+    - components
+    - docker
+    - swap
+    - iptables
+    - rancher
+    
+
 - hosts: masters
   become: true
   gather_facts: true

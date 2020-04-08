@@ -4,3 +4,4 @@ kubernetes/
 .vagrant/
 *.log
 ansible_fact_caching.cache/
+kube/
