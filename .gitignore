@@ -1,0 +1,6 @@
+kubernetes/
+.idea/
+.DS_Store
+.vagrant/
+*.log
+ansible_fact_caching.cache/
