@@ -49,7 +49,8 @@ Vagrant.configure("2") do |config|
         ansible.groups = {
             rancher: ["rancher"],
             masters: ["k8s-master"],
-            nodes: ["k8s-node-1","k8s-node-2"]
+            nodes: ["k8s-node-1"]
+            # nodes: ["k8s-node-1","k8s-node-2"]
             
         }
     end
