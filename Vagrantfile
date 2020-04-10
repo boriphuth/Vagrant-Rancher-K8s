@@ -4,12 +4,6 @@ N = 1
 Vagrant.configure("2") do |config|
     config.ssh.insert_key = false
 
-    # Virtualbox configuration
-    config.vm.provider "virtualbox" do |v|
-        v.memory = 2048
-        v.cpus = 2
-    end
-    
      # Rancher configuration
      config.vm.define "rancher" do |rancher|
         rancher.vm.box = IMAGE_NAME
@@ -19,6 +13,7 @@ Vagrant.configure("2") do |config|
         # Virtualbox configurations
         rancher.vm.provider "virtualbox" do |v|
             v.cpus = 2
+            v.memory = 4096
         end
     end
 
@@ -31,6 +26,7 @@ Vagrant.configure("2") do |config|
         # Virtualbox configurations
         master.vm.provider "virtualbox" do |v|
             v.cpus = 2
+            v.memory = 4096
         end
     end
 
@@ -40,6 +36,12 @@ Vagrant.configure("2") do |config|
             node.vm.box = IMAGE_NAME
             node.vm.network "public_network", ip: "192.168.1.#{i + 211}"
             node.vm.hostname = "k8s-node-#{i}"
+            
+             # Virtualbox configuration
+            config.vm.provider "virtualbox" do |v|
+                v.memory = 4096
+                v.cpus = 2
+            end
         end
     end
 

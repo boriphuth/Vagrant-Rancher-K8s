@@ -5,7 +5,8 @@
 
 - name: Add apt repository for stable version
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    # repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
     state: present
 
 - name: Install docker and its dependecies
@@ -15,11 +16,13 @@
     update_cache: yes
   vars:
     packages:
-    - docker-ce=18.06.2~ce~3-0~ubuntu
+    # - docker-ce=18.06.2~ce~3-0~ubuntu
+    - docker-ce
     - containerd.io
   notify:
     - docker status
 
+# $ sudo usermod -a -G docker $USER
 - name: Add vagrant user to docker group
   user:
     name: vagrant
