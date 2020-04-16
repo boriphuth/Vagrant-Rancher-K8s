@@ -1,5 +1,5 @@
-IMAGE_NAME = "ubuntu/bionic64"
-N = 1
+IMAGE_NAME = "bento/centos-7.7"
+N = 2
 
 Vagrant.configure("2") do |config|
     config.ssh.insert_key = false
@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
         # Virtualbox configurations
         rancher.vm.provider "virtualbox" do |v|
             v.cpus = 2
-            v.memory = 4096
+            v.memory = 2048
         end
     end
 
@@ -41,8 +41,9 @@ Vagrant.configure("2") do |config|
             
              # Virtualbox configuration
             config.vm.provider "virtualbox" do |v|
-                v.memory = 4096
                 v.cpus = 2
+                v.memory = 4096
+
             end
         end
     end
@@ -53,8 +54,8 @@ Vagrant.configure("2") do |config|
         ansible.groups = {
             rancher: ["rancher"],
             masters: ["k8s-master"],
-            nodes: ["k8s-node-1"]
-            # nodes: ["k8s-node-1","k8s-node-2"]
+            # nodes: ["k8s-node-1"]
+            nodes: ["k8s-node-1","k8s-node-2"]
             
         }
     end
