@@ -8,8 +8,8 @@ Vagrant.configure("2") do |config|
      config.vm.define "rancher" do |rancher|
         rancher.vm.box = IMAGE_NAME
         rancher.vm.network "public_network", ip: "192.168.1.210"
-        rancher.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 80, host: 80 "http"
-        rancher.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 443, host: 443 "https"
+        rancher.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 80, host: 80, id: "http"
+        rancher.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 443, host: 443, id: "https"
         rancher.vm.hostname = "rancher"
 
         # Virtualbox configurations
@@ -23,8 +23,8 @@ Vagrant.configure("2") do |config|
     config.vm.define "k8s-master" do |master|
         master.vm.box = IMAGE_NAME
         master.vm.network "public_network", ip: "192.168.1.211"
-        master.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 6443, host: 6443 "kube"
-        master.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 30002, host: 30002 "k8s-dashboard"
+        master.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 6443, host: 6443, id: "kube"
+        master.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 30002, host: 30002, id: "k8s-dashboard"
         master.vm.hostname = "k8s-master"
 
         # Virtualbox configurations
