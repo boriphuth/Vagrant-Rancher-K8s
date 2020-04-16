@@ -21,6 +21,8 @@ Vagrant.configure("2") do |config|
     config.vm.define "k8s-master" do |master|
         master.vm.box = IMAGE_NAME
         master.vm.network "public_network", ip: "192.168.1.211"
+        master.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 6443, host: 6443
+        master.vm.network "forwarded_port", host_ip:"192.168.1.109", guest: 30002, host: 30002
         master.vm.hostname = "k8s-master"
 
         # Virtualbox configurations
